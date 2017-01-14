@@ -103,6 +103,7 @@ class RegisterPageViewController: UIViewController {
                             defaults.setValue(emailVal, forKey: "userEmail")
                             defaults.setValue(userReg, forKey: "userRegistrationType")
                             defaults.setValue(true, forKey: "successfulLogin")
+
                             print(json)
                         } else {
                             
