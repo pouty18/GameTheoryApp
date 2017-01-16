@@ -31,25 +31,13 @@ class ViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-        goToLoginPage(false)
+        updateUserInfo()
     }
     
-    func goToLoginPage(value: Bool) {
-        if value {
-//            hasLoaded = false
-            self.performSegueWithIdentifier("loginView", sender: self)
-        } else {
-            if let name = defaults.stringForKey("userName") {
-                titleLabel.text! = "Welcome \(name)"
-            }
-            if let email = defaults.stringForKey("userEmail") {
-                emailLabel.text! = "\(email)"
-            }
-            if let reg = defaults.stringForKey("userRegistrationType") {
-                registrationTypeLabel.text! = "\(reg)"   
-            }
-        }
-        
+    func updateLabels() {
+        titleLabel.text! = "\(globalUser.name)"
+        emailLabel.text! = "\(globalUser.email)"
+        registrationTypeLabel.text! = "\(globalUser.registrationType)"
     }
     
     func setValues(name: String, email: String, regType: String){
@@ -70,7 +58,76 @@ class ViewController: UIViewController {
         defaults.removeObjectForKey("userRegistrationType")
         defaults.removeObjectForKey("successfulLogin")
         defaults.removeObjectForKey("userIsLoggedIn")
+        
+        globalUser = User()
+        
         self.performSegueWithIdentifier("loginView2", sender: self)
+    }
+    
+    
+    //call updateUserInfo to update the the labels for the current user
+    func updateUserInfo() {
+        defaults.removeObjectForKey("data")
+        
+        let urlString = "http://localhost/~richardpoutier/stap/userInfo.php"
+        let url = NSURL(string: urlString)
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "POST"
+        
+        let requestString = "type=getUserInfo&email="+emailLabel.text!
+        
+        request.HTTPBody = requestString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        
+        session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            guard error == nil && data != nil else {                                                          // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            } else {
+                if let data = data {
+                    defaults.setValue(data, forKey: "data")
+                    defaults.synchronize()
+                }
+            }
+        }).resume()
+        
+        if let myData = defaults.objectForKey("data") as? NSData {
+            print("Line 101")
+            do {
+                if let json = try NSJSONSerialization.JSONObjectWithData(myData, options: []) as? [String: AnyObject] {
+                    print("Line 104")
+                    guard let status = json["status"] as? String else {
+                        print("Error finding userInfo with json:")
+                        return
+                    }
+                    
+                    if status == "Success" {
+                        guard let userName = json["name"] as? String, let userReg = json["registrationType"] as? String else {
+                            print("Error casting name and userReg to variables")
+                            return
+                        }
+                        print("called userInfo.php and successfuly binded json to variables ")
+                        globalUser.name = userName
+                        globalUser.registrationType = userReg
+                        updateLabels()
+                        registrationTypeLabel.text! = userReg
+                    }
+                } else {
+                    print("error in the serialization of json data")
+                }
+                
+            } catch {
+                print("error serializing JSON: \(error)")
+            }
+            
+        }
+        print(globalUser.printDetails())
+
     }
 }
 

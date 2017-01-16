@@ -75,14 +75,6 @@ class RegisterPageViewController: UIViewController {
                 //adding the parameters to request body
                 request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
                 
-                
-//                session.dataTaskWithRequest(request) { data, response, error in
-//                    guard error == nil && data != nil else {                                                          // check for fundamental networking error
-//                        print("error=\(error)")
-//                        return
-//                    }
-                
-                
 
                 session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
                     guard error == nil && data != nil else {                                                          // check for fundamental networking error
@@ -95,39 +87,71 @@ class RegisterPageViewController: UIViewController {
                     } else {
                         
 //                        let responseString = String(data: data!, encoding: NSUTF8StringEncoding)
-                        
-                        do {
-                        if let data = data, json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
-                                // Do stuff
-                            defaults.setValue(name, forKey: "userName")
-                            defaults.setValue(emailVal, forKey: "userEmail")
-                            defaults.setValue(userReg, forKey: "userRegistrationType")
-                            defaults.setValue(true, forKey: "successfulLogin")
-
-                            print(json)
-                        } else {
-                            
-                            }
-                        
-                        } catch {
-                            print("error serializing JSON: \(error)")
+                        if let data = data {
+                            defaults.setValue(data, forKey: "data")
+                            defaults.synchronize()
                         }
+                        
+
+//                        do {
+//                        if let data = data, json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
+//                                // Do stuff
+//                            defaults.setValue(name, forKey: "userName")
+//                            defaults.setValue(emailVal, forKey: "userEmail")
+//                            defaults.setValue(userReg, forKey: "userRegistrationType")
+//                            defaults.setValue(false, forKey: "successfulLogin")
+//                            defaults.synchronize()
+//                            print(json)
+//                        } else {
+//                            
+//                            }
+//                        
+//                        } catch {
+//                            print("error serializing JSON: \(error)")
+//                        }
                     }
                 }).resume()
+
+                if let myData = defaults.objectForKey("data") as? NSData {
+                    do {
+                        if let json = try NSJSONSerialization.JSONObjectWithData(myData, options: []) as? [String: AnyObject] {
+                            // Do stuff
+                            
+                            guard let status = json["status"] as? String else {
+                                print("Error finding userInfo with json:")
+                                return
+                            }
+                            
+                            if status == "Success" {
+                                
+                                globalUser.isLoggedIn = true
+                                globalUser.email = emailVal
+                                globalUser.name = name
+                                globalUser.registrationType = userReg
+                                print("updated Global user")
+                            }
+                        } else {
+                            
+                        }
+                        
+                    } catch {
+                        print("error serializing JSON: \(error)")
+                    }
+                    
+                }
         }
+//        globalUser.printDetails()
          presentProtectedView()
-    }
-    
-    @IBAction func test(sender: AnyObject) {
-        print(defaults.stringForKey("wasHit"))
-        print(defaults.stringForKey("successfulLogin"))
     }
     
     func presentProtectedView() {
         
-        if NSUserDefaults.standardUserDefaults().boolForKey("successfulLogin") {
+        if globalUser.isLoggedIn {
             self.performSegueWithIdentifier("protectedViewFromRegister", sender: nil)
             print("ChangeViews")
+        }
+        else {
+            print("Didn't work")
         }
     }
 
