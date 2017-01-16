@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-        updateUserInfo()
+            updateUserInfo()
     }
     
     func updateLabels() {
@@ -40,12 +40,6 @@ class ViewController: UIViewController {
         registrationTypeLabel.text! = "\(globalUser.registrationType)"
     }
     
-    func setValues(name: String, email: String, regType: String){
-        titleLabel.text! = "Welcome, " + name
-        emailLabel.text! = email
-        registrationTypeLabel.text! = regType
-        
-    }
 
     @IBAction func signOutButtonTapped(sender: AnyObject) {
         titleLabel.text! = "Protected"
@@ -67,7 +61,6 @@ class ViewController: UIViewController {
     
     //call updateUserInfo to update the the labels for the current user
     func updateUserInfo() {
-        defaults.removeObjectForKey("data")
         
         let urlString = "http://localhost/~richardpoutier/stap/userInfo.php"
         let url = NSURL(string: urlString)
@@ -96,6 +89,7 @@ class ViewController: UIViewController {
             }
         }).resume()
         
+        print("made it to line 97 viewController.swift")
         if let myData = defaults.objectForKey("data") as? NSData {
             print("Line 101")
             do {
@@ -107,7 +101,13 @@ class ViewController: UIViewController {
                     }
                     
                     if status == "Success" {
-                        guard let userName = json["name"] as? String, let userReg = json["registrationType"] as? String else {
+                        print("Json call was successful in viewController.swift")
+                        guard let userInfo = json["userInfo"] as? [String: AnyObject] else {
+                            print("error binding userInfo in viewController.swift")
+                            return
+                        }
+                        
+                        guard let userName = userInfo["name"] as? String, let userReg = userInfo["registrationType"] as? String else {
                             print("Error casting name and userReg to variables")
                             return
                         }
@@ -126,7 +126,6 @@ class ViewController: UIViewController {
             }
             
         }
-        print(globalUser.printDetails())
 
     }
 }

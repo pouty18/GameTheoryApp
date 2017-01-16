@@ -71,9 +71,7 @@ class LoginViewController: UIViewController {
                             print("Error finding userInfo with json:")
                             return
                         }
-                        
-                        if loginStatus == "User is registered" {
-                            print("made it to line 76")
+                        if loginStatus == "Success" {
                             defaults.setBool(true, forKey: "loginSuccess")
                             defaults.synchronize()
                         }
