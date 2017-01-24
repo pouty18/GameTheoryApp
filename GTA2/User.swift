@@ -70,5 +70,9 @@ class User {
         print("RegistrationType: \(_registrationType)")
         print("Is Logged In: \(_loggedIn)")
     }
+    
+    func logIn() {
+        _loggedIn = true
+    }
 
 }

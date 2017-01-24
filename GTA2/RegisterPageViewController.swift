@@ -21,6 +21,16 @@ class RegisterPageViewController: UIViewController {
     var lastName: String!
     var email: String!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        globalUser.isLoggedIn = false
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        globalUser.isLoggedIn = false
+    }
+    
     
     @IBAction func registerButtonTapped(sender: AnyObject) {
         firstName = firstNameTxt.text!
@@ -52,7 +62,7 @@ class RegisterPageViewController: UIViewController {
                 
                 //creating NSMutableURLRequest
                 //                let request = NSMutableURLRequest(URL: urlString!)
-                let urlString = "http://localhost/~richardpoutier/stap/userRegister.php"
+                let urlString = "http://localhost/~richardpoutier/stap/copyRegister.php"
                 let session = NSURLSession.sharedSession()
                 let url = NSURL(string: urlString)
                 let request = NSMutableURLRequest(URL: url!)
@@ -92,23 +102,6 @@ class RegisterPageViewController: UIViewController {
                             defaults.synchronize()
                         }
                         
-
-//                        do {
-//                        if let data = data, json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
-//                                // Do stuff
-//                            defaults.setValue(name, forKey: "userName")
-//                            defaults.setValue(emailVal, forKey: "userEmail")
-//                            defaults.setValue(userReg, forKey: "userRegistrationType")
-//                            defaults.setValue(false, forKey: "successfulLogin")
-//                            defaults.synchronize()
-//                            print(json)
-//                        } else {
-//                            
-//                            }
-//                        
-//                        } catch {
-//                            print("error serializing JSON: \(error)")
-//                        }
                     }
                 }).resume()
 
@@ -121,7 +114,7 @@ class RegisterPageViewController: UIViewController {
                                 print("Error finding userInfo with json:")
                                 return
                             }
-                            
+                            print(json.debugDescription)
                             if status == "Success" {
                                 
                                 globalUser.isLoggedIn = true
@@ -129,11 +122,10 @@ class RegisterPageViewController: UIViewController {
                                 globalUser.name = name
                                 globalUser.registrationType = userReg
                                 print("updated Global user")
+                            } else if status == "Error" {
+                                globalUser.isLoggedIn = false
                             }
-                        } else {
-                            
                         }
-                        
                     } catch {
                         print("error serializing JSON: \(error)")
                     }
@@ -151,6 +143,7 @@ class RegisterPageViewController: UIViewController {
             print("ChangeViews")
         }
         else {
+            presentAlertView("A User with that account already exists")
             print("Didn't work")
         }
     }
@@ -160,11 +153,19 @@ class RegisterPageViewController: UIViewController {
 
     }
     
-    
-    func presentAlertView() {
+    func makeTextfieldsRed() {
+        emailTxt.text!  = ""
+        passwordTxt.text! = ""
+        verifyTxt.text! = ""
+        emailTxt.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName: UIColor.redColor()])
+        passwordTxt.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.redColor()])
+        verifyTxt.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName: UIColor.redColor()])
+    }
+    func presentAlertView(str: String) {
         
-        let alert = UIAlertController(title: "Message", message: presentText(), preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+        let alert = UIAlertController(title: str, message: presentText(), preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: { action in
+        self.makeTextfieldsRed() }))
         self.presentViewController(alert, animated: true, completion: nil)
     }
     

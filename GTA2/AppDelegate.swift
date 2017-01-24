@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 @UIApplicationMain
@@ -16,12 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // Override point for customization after application launch.h
         
-        defaults.removeObjectForKey("userName")
-        defaults.removeObjectForKey("userEmail")
-        defaults.removeObjectForKey("userRegistrationType")
-        defaults.removeObjectForKey("userIsLoggedIn")
+        // Use Firebase library to configure APIs
+        FIRApp.configure()
+        
+        
+//        loginDefault.setBool(false, forKey: "isLoggedIn")
+        
+//        defaults.removeObjectForKey("userName")
+//        defaults.removeObjectForKey("userEmail")
+//        defaults.removeObjectForKey("userRegistrationType")
+//        defaults.removeObjectForKey("userIsLoggedIn")
+//        defaults.removeObjectForKey("LoginSuccess")
 
         return true
     }

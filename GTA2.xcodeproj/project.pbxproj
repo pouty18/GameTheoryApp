@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		831B8DED64F67927EE721B26 /* Pods_GTA2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA772AFA5643ECD0A2D78B6F /* Pods_GTA2.framework */; };
+		A72195991E206C9100287C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72195981E206C9100287C34 /* AppDelegate.swift */; };
+		A721959B1E206C9100287C34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721959A1E206C9100287C34 /* ViewController.swift */; };
+		A721959E1E206C9100287C34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A721959C1E206C9100287C34 /* Main.storyboard */; };
+		A72195A01E206C9100287C34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A721959F1E206C9100287C34 /* Assets.xcassets */; };
+		A72195A31E206C9100287C34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A72195A11E206C9100287C34 /* LaunchScreen.storyboard */; };
+		A72195AB1E2070E100287C34 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72195AA1E2070E100287C34 /* RegisterPageViewController.swift */; };
+		A72195AD1E2073C300287C34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72195AC1E2073C300287C34 /* LoginViewController.swift */; };
+		A73F9CF51E22D37D000596E9 /* person-placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A73F9CF41E22D37D000596E9 /* person-placeholder.jpg */; };
+		A73F9CF71E22D73F000596E9 /* 20161882-abstract-pattern-background-white-gray-pinstripe-line-design-element-for-graphic-art-use-vertical-li-Stock-Photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A73F9CF61E22D73F000596E9 /* 20161882-abstract-pattern-background-white-gray-pinstripe-line-design-element-for-graphic-art-use-vertical-li-Stock-Photo.jpg */; };
+		A73F9D001E22F05A000596E9 /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A73F9CFC1E22F05A000596E9 /* NotoSans-Bold.ttf */; };
+		A73F9D011E22F05A000596E9 /* NotoSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A73F9CFD1E22F05A000596E9 /* NotoSans-BoldItalic.ttf */; };
+		A73F9D021E22F05A000596E9 /* NotoSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A73F9CFE1E22F05A000596E9 /* NotoSans-Italic.ttf */; };
+		A73F9D031E22F05A000596E9 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A73F9CFF1E22F05A000596E9 /* NotoSans-Regular.ttf */; };
+		A73F9D051E22F157000596E9 /* RP Design.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A73F9D041E22F157000596E9 /* RP Design.jpg */; };
+		A73F9D071E22F3B3000596E9 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73F9D061E22F3B3000596E9 /* MaterialView.swift */; };
+		A73F9D0A1E22F4C2000596E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73F9D091E22F4C2000596E9 /* Constants.swift */; };
+		A73F9D0C1E22FABA000596E9 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A73F9D0B1E22FABA000596E9 /* logo.png */; };
+		A73F9D0E1E22FB80000596E9 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73F9D0D1E22FB80000596E9 /* MaterialButton.swift */; };
+		A73F9D141E22FCCA000596E9 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73F9D131E22FCCA000596E9 /* MaterialTextField.swift */; };
+		A73F9D161E230421000596E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A73F9D151E230421000596E9 /* GoogleService-Info.plist */; };
+		A771B7FC1E23116000343E33 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A771B7FB1E23116000343E33 /* DataService.swift */; };
+		A7D00F7A1E21CAF6006E5132 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D00F791E21CAF6006E5132 /* User.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A72195951E206C9100287C34 /* GTA2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTA2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A72195981E206C9100287C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A721959A1E206C9100287C34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A721959D1E206C9100287C34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A721959F1E206C9100287C34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A72195A21E206C9100287C34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A72195A41E206C9100287C34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A72195AA1E2070E100287C34 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
+		A72195AC1E2073C300287C34 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
+		A73F9CF41E22D37D000596E9 /* person-placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "person-placeholder.jpg"; path = "../../../person-placeholder.jpg"; sourceTree = "<group>"; };
+		A73F9CF61E22D73F000596E9 /* 20161882-abstract-pattern-background-white-gray-pinstripe-line-design-element-for-graphic-art-use-vertical-li-Stock-Photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "20161882-abstract-pattern-background-white-gray-pinstripe-line-design-element-for-graphic-art-use-vertical-li-Stock-Photo.jpg"; path = "../../../20161882-abstract-pattern-background-white-gray-pinstripe-line-design-element-for-graphic-art-use-vertical-li-Stock-Photo.jpg"; sourceTree = "<group>"; };
+		A73F9CFC1E22F05A000596E9 /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSans-Bold.ttf"; path = "../../../../Downloads/Noto_Sans/NotoSans-Bold.ttf"; sourceTree = "<group>"; };
+		A73F9CFD1E22F05A000596E9 /* NotoSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSans-BoldItalic.ttf"; path = "../../../../Downloads/Noto_Sans/NotoSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		A73F9CFE1E22F05A000596E9 /* NotoSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSans-Italic.ttf"; path = "../../../../Downloads/Noto_Sans/NotoSans-Italic.ttf"; sourceTree = "<group>"; };
+		A73F9CFF1E22F05A000596E9 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSans-Regular.ttf"; path = "../../../../Downloads/Noto_Sans/NotoSans-Regular.ttf"; sourceTree = "<group>"; };
+		A73F9D041E22F157000596E9 /* RP Design.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "RP Design.jpg"; path = "../../../RP Design.jpg"; sourceTree = "<group>"; };
+		A73F9D061E22F3B3000596E9 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		A73F9D091E22F4C2000596E9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A73F9D0B1E22FABA000596E9 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../logo.png; sourceTree = "<group>"; };
+		A73F9D0D1E22FB80000596E9 /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
+		A73F9D131E22FCCA000596E9 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
+		A73F9D151E230421000596E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A771B7FB1E23116000343E33 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		A7D00F791E21CAF6006E5132 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BA196B594B8601FE319DA107 /* Pods-GTA2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTA2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GTA2/Pods-GTA2.debug.xcconfig"; sourceTree = "<group>"; };
+		CA772AFA5643ECD0A2D78B6F /* Pods_GTA2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GTA2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8EE22FD707AAAB92776B153 /* Pods-GTA2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTA2.release.xcconfig"; path = "Pods/Target Support Files/Pods-GTA2/Pods-GTA2.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A72195921E206C9100287C34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				831B8DED64F67927EE721B26 /* Pods_GTA2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		977F8481FA9ADB61D43FB890 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA772AFA5643ECD0A2D78B6F /* Pods_GTA2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A721958C1E206C9100287C34 = {
+			isa = PBXGroup;
+			children = (
+				A72195971E206C9100287C34 /* GTA2 */,
+				A72195961E206C9100287C34 /* Products */,
+				CA3BA0097F5E94DA58578E39 /* Pods */,
+				977F8481FA9ADB61D43FB890 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A72195961E206C9100287C34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A72195951E206C9100287C34 /* GTA2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A72195971E206C9100287C34 /* GTA2 */ = {
+			isa = PBXGroup;
+			children = (
+				A771B7FA1E23115200343E33 /* Services */,
+				A73F9D081E22F4B7000596E9 /* Util */,
+				A73F9CFB1E22EFB1000596E9 /* Resources */,
+				A73F9CFA1E22EFA0000596E9 /* Model */,
+				A73F9CF91E22EF97000596E9 /* View */,
+				A73F9CF81E22EF8F000596E9 /* Controller */,
+				A72195981E206C9100287C34 /* AppDelegate.swift */,
+				A73F9CF31E22D36C000596E9 /* Images */,
+				A721959C1E206C9100287C34 /* Main.storyboard */,
+				A721959F1E206C9100287C34 /* Assets.xcassets */,
+				A73F9D041E22F157000596E9 /* RP Design.jpg */,
+				A72195A11E206C9100287C34 /* LaunchScreen.storyboard */,
+				A72195A41E206C9100287C34 /* Info.plist */,
+				A73F9D151E230421000596E9 /* GoogleService-Info.plist */,
+			);
+			path = GTA2;
+			sourceTree = "<group>";
+		};
+		A73F9CF31E22D36C000596E9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A73F9D0B1E22FABA000596E9 /* logo.png */,
+				A73F9CF41E22D37D000596E9 /* person-placeholder.jpg */,
+				A73F9CF61E22D73F000596E9 /* 20161882-abstract-pattern-background-white-gray-pinstripe-line-design-element-for-graphic-art-use-vertical-li-Stock-Photo.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		A73F9CF81E22EF8F000596E9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A72195AC1E2073C300287C34 /* LoginViewController.swift */,
+				A72195AA1E2070E100287C34 /* RegisterPageViewController.swift */,
+				A721959A1E206C9100287C34 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A73F9CF91E22EF97000596E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7D00F791E21CAF6006E5132 /* User.swift */,
+				A73F9D061E22F3B3000596E9 /* MaterialView.swift */,
+				A73F9D0D1E22FB80000596E9 /* MaterialButton.swift */,
+				A73F9D131E22FCCA000596E9 /* MaterialTextField.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		A73F9CFA1E22EFA0000596E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A73F9CFB1E22EFB1000596E9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A73F9CFC1E22F05A000596E9 /* NotoSans-Bold.ttf */,
+				A73F9CFD1E22F05A000596E9 /* NotoSans-BoldItalic.ttf */,
+				A73F9CFE1E22F05A000596E9 /* NotoSans-Italic.ttf */,
+				A73F9CFF1E22F05A000596E9 /* NotoSans-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A73F9D081E22F4B7000596E9 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A73F9D091E22F4C2000596E9 /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		A771B7FA1E23115200343E33 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A771B7FB1E23116000343E33 /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		CA3BA0097F5E94DA58578E39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA196B594B8601FE319DA107 /* Pods-GTA2.debug.xcconfig */,
+				F8EE22FD707AAAB92776B153 /* Pods-GTA2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A72195941E206C9100287C34 /* GTA2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A72195A71E206C9100287C34 /* Build configuration list for PBXNativeTarget "GTA2" */;
+			buildPhases = (
+				30B91B0FD73D442630DC9F03 /* [CP] Check Pods Manifest.lock */,
+				A72195911E206C9100287C34 /* Sources */,
+				A72195921E206C9100287C34 /* Frameworks */,
+				A72195931E206C9100287C34 /* Resources */,
+				03CF7FB87E77813E9D9030AA /* [CP] Embed Pods Frameworks */,
+				55ED880ACA72E7E895204D2A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GTA2;
+			productName = GTA2;
+			productReference = A72195951E206C9100287C34 /* GTA2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A721958D1E206C9100287C34 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Richard Poutier";
+				TargetAttributes = {
+					A72195941E206C9100287C34 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = A72195901E206C9100287C34 /* Build configuration list for PBXProject "GTA2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A721958C1E206C9100287C34;
+			productRefGroup = A72195961E206C9100287C34 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A72195941E206C9100287C34 /* GTA2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A72195931E206C9100287C34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A73F9D031E22F05A000596E9 /* NotoSans-Regular.ttf in Resources */,
+				A73F9D001E22F05A000596E9 /* NotoSans-Bold.ttf in Resources */,
+				A73F9D0C1E22FABA000596E9 /* logo.png in Resources */,
+				A73F9CF51E22D37D000596E9 /* person-placeholder.jpg in Resources */,
+				A72195A31E206C9100287C34 /* LaunchScreen.storyboard in Resources */,
+				A73F9D161E230421000596E9 /* GoogleService-Info.plist in Resources */,
+				A73F9D051E22F157000596E9 /* RP Design.jpg in Resources */,
+				A73F9D011E22F05A000596E9 /* NotoSans-BoldItalic.ttf in Resources */,
+				A72195A01E206C9100287C34 /* Assets.xcassets in Resources */,
+				A721959E1E206C9100287C34 /* Main.storyboard in Resources */,
+				A73F9CF71E22D73F000596E9 /* 20161882-abstract-pattern-background-white-gray-pinstripe-line-design-element-for-graphic-art-use-vertical-li-Stock-Photo.jpg in Resources */,
+				A73F9D021E22F05A000596E9 /* NotoSans-Italic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03CF7FB87E77813E9D9030AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GTA2/Pods-GTA2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		30B91B0FD73D442630DC9F03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		55ED880ACA72E7E895204D2A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GTA2/Pods-GTA2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A72195911E206C9100287C34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A72195AD1E2073C300287C34 /* LoginViewController.swift in Sources */,
+				A721959B1E206C9100287C34 /* ViewController.swift in Sources */,
+				A73F9D141E22FCCA000596E9 /* MaterialTextField.swift in Sources */,
+				A72195991E206C9100287C34 /* AppDelegate.swift in Sources */,
+				A7D00F7A1E21CAF6006E5132 /* User.swift in Sources */,
+				A771B7FC1E23116000343E33 /* DataService.swift in Sources */,
+				A72195AB1E2070E100287C34 /* RegisterPageViewController.swift in Sources */,
+				A73F9D0E1E22FB80000596E9 /* MaterialButton.swift in Sources */,
+				A73F9D071E22F3B3000596E9 /* MaterialView.swift in Sources */,
+				A73F9D0A1E22F4C2000596E9 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A721959C1E206C9100287C34 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A721959D1E206C9100287C34 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A72195A11E206C9100287C34 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72195A21E206C9100287C34 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A72195A51E206C9100287C34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A72195A61E206C9100287C34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A72195A81E206C9100287C34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA196B594B8601FE319DA107 /* Pods-GTA2.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GTA2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpoutier.gta2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A72195A91E206C9100287C34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8EE22FD707AAAB92776B153 /* Pods-GTA2.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GTA2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpoutier.gta2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A72195901E206C9100287C34 /* Build configuration list for PBXProject "GTA2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A72195A51E206C9100287C34 /* Debug */,
+				A72195A61E206C9100287C34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A72195A71E206C9100287C34 /* Build configuration list for PBXNativeTarget "GTA2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A72195A81E206C9100287C34 /* Debug */,
+				A72195A91E206C9100287C34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A721958D1E206C9100287C34 /* Project object */;
+}

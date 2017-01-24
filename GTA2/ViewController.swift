@@ -9,7 +9,9 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -17,12 +19,15 @@ class ViewController: UIViewController {
     
     var game = GameMaster()
     
+    var items: [String] = ["We", "Heart", "Swift"]
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
         // Do any additional setup after loading the view, typically from a nib.
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +45,22 @@ class ViewController: UIViewController {
         registrationTypeLabel.text! = "\(globalUser.registrationType)"
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.items.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+        
+        cell.textLabel?.text = self.items[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("You selected cell #\(indexPath.row)!")
+    }
+    
 
     @IBAction func signOutButtonTapped(sender: AnyObject) {
         titleLabel.text! = "Protected"
@@ -52,6 +73,8 @@ class ViewController: UIViewController {
         defaults.removeObjectForKey("userRegistrationType")
         defaults.removeObjectForKey("successfulLogin")
         defaults.removeObjectForKey("userIsLoggedIn")
+        
+        defaults.removeObjectForKey("loginSuccess")
         
         globalUser = User()
         
@@ -89,12 +112,12 @@ class ViewController: UIViewController {
             }
         }).resume()
         
-        print("made it to line 97 viewController.swift")
+
         if let myData = defaults.objectForKey("data") as? NSData {
-            print("Line 101")
+
             do {
                 if let json = try NSJSONSerialization.JSONObjectWithData(myData, options: []) as? [String: AnyObject] {
-                    print("Line 104")
+
                     guard let status = json["status"] as? String else {
                         print("Error finding userInfo with json:")
                         return

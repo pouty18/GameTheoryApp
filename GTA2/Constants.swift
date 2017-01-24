@@ -11,6 +11,8 @@ import UIKit
 
 var defaults = NSUserDefaults.standardUserDefaults()
 
+var loginDefault = NSUserDefaults.standardUserDefaults()
+
 let SHADOW_COLOR: CGFloat = 157.0 / 255.0
 
 var globalUser = User()
