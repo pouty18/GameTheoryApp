@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Firebase
 
 class RegisterPageViewController: UIViewController {
 
@@ -49,91 +50,43 @@ class RegisterPageViewController: UIViewController {
         }
             
         else    //make sure the two passwords are the same
-            if (passwordTxt.text! != verifyTxt.text!) {
+            if (passwordTxt.text! != verifyTxt.text! || passwordTxt.text!.characters.count <= 5) {
                 passwordTxt.text! = ""
                 verifyTxt.text! = ""
                 passwordTxt.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.redColor()])
                 verifyTxt.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName: UIColor.redColor()])
             }
             else  {
-                
-                //access webservice
-                //                let urlString = NSURL(string: "http://localhost/~richardpoutier/stap/register-process.php")
-                
-                //creating NSMutableURLRequest
-                //                let request = NSMutableURLRequest(URL: urlString!)
-                let urlString = "http://localhost/~richardpoutier/stap/copyRegister.php"
-                let session = NSURLSession.sharedSession()
-                let url = NSURL(string: urlString)
-                let request = NSMutableURLRequest(URL: url!)
-                request.HTTPMethod = "POST";
-                
-                //                let session = NSURLSession.sharedSession()
-                //setting the method to post
-                //                request.HTTPMethod = "POST"
-                
                 //getting values from text fields
-                let emailVal = emailTxt.text!
-                let name    = firstNameTxt.text! + " \(lastNameTxt.text!)"
-                let pass1   = passwordTxt.text!
-                let pass2   = verifyTxt.text!
-                let userReg = "student"
+                let email = emailTxt.text!
+                let password   = passwordTxt.text!
                 
-                //creating the post parameter by concatenating the keys and values from text field
-                let postString = "name="+name+"&email="+emailVal+"&password1="+pass1+"&password2="+pass2+"&registrationType="+userReg
-                
-                //adding the parameters to request body
-                request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-                
-
-                session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-                    guard error == nil && data != nil else {                                                          // check for fundamental networking error
-                        print("error=\(error)")
-                        return
-                    }
-                    if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
-                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                        print("response = \(response)")
-                    } else {
+                FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user: FIRUser?, error) in
+                    if error == nil {
+//                        self.labelMessage.text = "You are successfully registered"
+                        print  ("You are successfully registered")
                         
-//                        let responseString = String(data: data!, encoding: NSUTF8StringEncoding)
-                        if let data = data {
-                            defaults.setValue(data, forKey: "data")
-                            defaults.synchronize()
-                        }
+                        let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
+                        changeRequest?.displayName = self.firstName+" "+self.lastName
+                        changeRequest?.commitChangesWithCompletion({ (error) in
+                            // ...
+                            if error == nil {
+                                print("Name updated")
+                                self.performSegueWithIdentifier("protectedViewFromRegister", sender: nil)
+                            }
+                            else {
+                                print("Error updating the name")
+                            }
+                        })
                         
-                    }
-                }).resume()
-
-                if let myData = defaults.objectForKey("data") as? NSData {
-                    do {
-                        if let json = try NSJSONSerialization.JSONObjectWithData(myData, options: []) as? [String: AnyObject] {
-                            // Do stuff
-                            
-                            guard let status = json["status"] as? String else {
-                                print("Error finding userInfo with json:")
-                                return
-                            }
-                            print(json.debugDescription)
-                            if status == "Success" {
-                                
-                                globalUser.isLoggedIn = true
-                                globalUser.email = emailVal
-                                globalUser.name = name
-                                globalUser.registrationType = userReg
-                                print("updated Global user")
-                            } else if status == "Error" {
-                                globalUser.isLoggedIn = false
-                            }
-                        }
-                    } catch {
-                        print("error serializing JSON: \(error)")
+                    }else{
+//                        self.labelMessage.text = "Registration Failed.. Please Try Again"
+                        print ("Registration Failed... Please Try Again")
                     }
                     
-                }
+                })
+                // ...
         }
-//        globalUser.printDetails()
-         presentProtectedView()
     }
     
     func presentProtectedView() {
