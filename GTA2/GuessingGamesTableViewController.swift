@@ -7,31 +7,30 @@
 //
 
 import UIKit
+import Firebase
 
-struct GuessingGame {
-    var lowerBound: String?
-    var upperBound: String?
-    var multiplier: Float?
-    var reward: Int?
-    
-    init(_lowerBound: String?, _upperBound: String?, _multiplier: Float?, _reward: Int?) {
-        self.lowerBound = _lowerBound
-        self.upperBound = _upperBound
-        self.multiplier = _multiplier
-        self.reward = _reward
-    }
-}
 
 class GuessingGamesTableViewController: UITableViewController {
     
-    let playerData = [
-    GuessingGame(_lowerBound: "0", _upperBound: "1000", _multiplier: 0.1, _reward: 10),
-    GuessingGame(_lowerBound: "0", _upperBound: "500", _multiplier: 0.4, _reward: 5),
-    GuessingGame(_lowerBound: "100", _upperBound: "500", _multiplier: 0.8, _reward: 15),
-    GuessingGame(_lowerBound: "0", _upperBound: "5000", _multiplier: 0.75, _reward: 20)]
+    var ref: FIRDatabaseReference! = FIRDatabase.database().reference()
     
-    let players = playerData
+    var players:[GuessingGame] = playerData
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadGuessingGameData()
+    }
 
+    @IBAction func doneWithTable(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -43,11 +42,76 @@ class GuessingGamesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
+            
+            
             let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCell", forIndexPath: indexPath)
             
             let player = players[indexPath.row] as GuessingGame
-            cell.textLabel?.text = GuessingGame.name
-            cell.detailTextLabel?.text = GuessingGame.game
+            let range = "Range: \(player.lowerBound!)-\(player.upperBound!), Multiplier: \(player.multiplier!)"
+            cell.textLabel?.text = player.gameName
+            cell.detailTextLabel?.text = range
             return cell
     }
+
+    func loadGuessingGameData() {
+        var newData: [GuessingGame] = [
+            GuessingGame(_name: "Game1", _lowerBound: "0", _upperBound: "1000", _multiplier: 0.1, _reward: 10)]
+        newData.removeAll()
+        players.removeAll()
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            
+            if let postData = snapshot.value as? [String: AnyObject] {
+                
+                if let gamesList = postData["games"] {
+                    
+                    //get guessing Games
+
+                    if let gGamesList = gamesList["guessingGames"] as? [String: AnyObject] {
+                        //get individual games, and add them to the arrary
+
+                        for child in gGamesList {
+                            let tempKey = child.0
+                            if let tempName = child.1["gameName"] as? String {
+                                if let tempUBound = child.1["upperRange"] as? String {
+                                   if let tempLBound = child.1["lowerRange"] as? String {
+                                      if let tempMultiplier = child.1["multiplier"] as? String {
+                                        if let tempReward = child.1["reward"] as? String {
+                                            self.players.append(GuessingGame(_name: tempName, _lowerBound: tempLBound, _upperBound: tempUBound, _multiplier: Float(tempMultiplier), _reward: Int(tempReward), _key: tempKey))
+                                            print("made it NIGGA")
+                                            
+                                        } else {
+                                            print("error line 74 ")
+                                        }
+                                      } else {
+                                        print("error line 73")
+                                        }
+                                   } else {
+                                    print("error line 72")
+                                    }
+                                } else {
+                                    print("error line 71")
+                                }
+                            } else {
+                                    print("error in guard statement")
+                                    return
+                            }
+                        }
+                    } else {
+                        print("Error line 65: unable to retrieve guessingGames from games")
+                    }
+                    
+                } else {
+                    print("error on line 61")
+                }
+                
+            } else {
+                print("error making snapshot json in guessingGame")
+            }
+            print(self.players.debugDescription)
+            self.tableView.reloadData()
+            
+    })
+
 }
+}
+

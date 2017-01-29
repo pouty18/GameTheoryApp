@@ -11,6 +11,7 @@ import Firebase
 
 class GuessingGameViewController: UIViewController {
 
+    @IBOutlet weak var gameNameTxt: UITextField!
     @IBOutlet weak var lowerRangeTxt: UITextField!
     @IBOutlet weak var upperRangeTxt: UITextField!
     @IBOutlet weak var factorTxt: UITextField!
@@ -33,21 +34,17 @@ class GuessingGameViewController: UIViewController {
     func addDataToDatabase() {
         let childs = ref.child("guessingGames").childByAutoId()
         let key = childs.key
-        let post = ["lowerRange": lowerRangeTxt.text!,
+        let post = ["gameName": gameNameTxt.text!,
+            "lowerRange": lowerRangeTxt.text!,
             "upperRange": upperRangeTxt.text!,
             "multiplier": factorTxt.text!,
             "reward": rewardTxt.text!]
         let childUpdates = ["/games/guessingGames/\(key)/" : post]
         ref.updateChildValues(childUpdates as [NSObject : AnyObject])
-//
-//        let key = self.ref.child("guessingGames").childByAutoId()
-//        key.setValue(["lowerRange": self.lowerRangeTxt.text!])
-//        key.setValue(["upperRange": self.upperRangeTxt.text!])
-//        key.setValue(["multiplier": self.factorTxt.text!])
-//        key.setValue(["reward": self.rewardTxt.text!])
     }
     
     func clearFields() {
+        gameNameTxt.text = ""
         lowerRangeTxt.text = ""
         upperRangeTxt.text = ""
         factorTxt.text = ""
@@ -86,7 +83,7 @@ class GuessingGameViewController: UIViewController {
     }
     
     func presentText()->String {
-        let str: String = ("Range: \(getRange()), Multiplier: \(multiplierReviewLabel.text!), Factor: \(factorTxt.text!), Reward: \(rewardTxt.text!)")
+        let str: String = ("Name: \(gameNameTxt.text), Range: \(getRange()), Multiplier: \(multiplierReviewLabel.text!), Factor: \(factorTxt.text!), Reward: \(rewardTxt.text!)")
         return str
     }
     

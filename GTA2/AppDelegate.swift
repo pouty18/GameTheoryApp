@@ -23,14 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         
-        
-//        loginDefault.setBool(false, forKey: "isLoggedIn")
-        
-//        defaults.removeObjectForKey("userName")
-//        defaults.removeObjectForKey("userEmail")
-//        defaults.removeObjectForKey("userRegistrationType")
-//        defaults.removeObjectForKey("userIsLoggedIn")
-//        defaults.removeObjectForKey("LoginSuccess")
+    
 
         return true
     }
