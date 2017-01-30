@@ -26,6 +26,20 @@ class GuessingGamesTableViewController: UITableViewController {
         loadGuessingGameData()
     }
 
+    
+    override func tableView(tableView: UITableView, commitEditingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        print("Delete called")
+        if commitEditingStyle == UITableViewCellEditingStyle.Delete {
+            print("hit if statement")
+            let groceryItem = players[indexPath.row]
+            ref.child("/games/guessingGames/\(groceryItem.key)").removeValueWithCompletionBlock { (error, ref) in
+                if error != nil {
+                    print("error \(error)")
+                }
+            }
+        }
+    }
+
     @IBAction func doneWithTable(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
