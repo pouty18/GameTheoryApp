@@ -14,11 +14,12 @@ class ViewController: UIViewController {
 
     
     @IBOutlet weak var titleLabel: UILabel!
+    
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var registrationTypeLabel: UILabel!
     
-    var ref: FIRDatabaseReference! = FIRDatabase.database().reference()
-        
+    var ref: FIRDatabaseReference!
+    
     var items: [String] = ["We", "Heart", "Swift"]
 
     
@@ -26,23 +27,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
+        
         //attempt to get user info
-        FIRAuth.auth()?.addAuthStateDidChangeListener( { (auth, user) in
-            // ...
-            if (user?.displayName != nil) {
-                self.titleLabel.text = user?.displayName
-            } else {
-                self.titleLabel.text = "User-Name"
+        if let user = FIRAuth.auth()?.currentUser {
+            if let name = user.displayName {
+                self.titleLabel.text = name
             }
-            if (user?.email != nil) {
-                self.emailLabel.text = user?.email
+            if let email = user.email {
+                self.emailLabel.text = email
             }
             self.registrationTypeLabel.text = "Student"
-        })
+            
+            let thisID = user.uid
+            globalAuthID = thisID
+            
+            
+        }
         
-        
-
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,18 +51,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
             updateUserInfo()
     }
-    
-    //---------------------------------------------------------------------------------------------------------------------------------------------------------
-    
-    @IBAction func testButtonPressed(sender: AnyObject) {
-        self.ref.child("users").childByAutoId().setValue(["username": self.titleLabel.text!+" pressed testButton"])
-        print("Test button pushed")
-    }
-    
-    //---------------------------------------------------------------------------------------------------------------------------------------------------------
+
     
     func updateLabels() {
         titleLabel.text! = "\(globalUser.name)"
@@ -70,19 +63,14 @@ class ViewController: UIViewController {
     }
     
 
-    @IBAction func signOutButtonTapped(sender: AnyObject) {
-        if (titleLabel.text! == "" || emailLabel.text! == "" || registrationTypeLabel.text! == "" ) {
-            
-        } else {
-//            titleLabel.text! = ""
-//            emailLabel.text! = ""
-//            registrationTypeLabel.text! = ""
-        }
+    @IBAction func signOutButtonTapped(_ sender: AnyObject) {
+        
         //log off user
         
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()
+            globalAuthID = ""
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
@@ -90,7 +78,7 @@ class ViewController: UIViewController {
         
         globalUser = User()
         
-        self.performSegueWithIdentifier("loginView2", sender: self)
+        self.performSegue(withIdentifier: "loginView2", sender: self)
     }
     
     

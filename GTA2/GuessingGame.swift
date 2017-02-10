@@ -45,12 +45,14 @@ struct GuessingGame {
         ref = snapshot.ref
     }
     
+    
+    
     func toAnyObject() -> Any {
         return [
             "name": gameName,
             "range": getRange(),
-            "multiplier": String(multiplier),
-            "reward": String(reward)
+            "multiplier": String(describing: multiplier),
+            "reward": String(describing: reward)
         ]
     }
     

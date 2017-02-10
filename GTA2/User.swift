@@ -9,10 +9,10 @@
 import UIKit
 
 class User {
-    private var _name: String
-    private var _email: String
-    private var _registrationType: String
-    private var _loggedIn: Bool
+    fileprivate var _name: String
+    fileprivate var _email: String
+    fileprivate var _registrationType: String
+    fileprivate var _loggedIn: Bool
 
     var name: String {
         get {

@@ -24,6 +24,41 @@ class GuessingGameViewController: UIViewController {
     var ref: FIRDatabaseReference! = FIRDatabase.database().reference()
     
     
+    @IBOutlet weak var myScrollView: UIScrollView!
+    
+    @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Note that SO highlighting makes the new selector syntax (#selector()) look
+        // like a comment but it isn't one
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
+                self.keyboardHeightLayoutConstraint?.constant = 0.0
+            } else {
+                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+            }
+            UIView.animate(withDuration: duration,
+                           delay: TimeInterval(0),
+                           options: animationCurve,
+                           animations: { self.view.layoutIfNeeded() },
+                           completion: nil)
+        }
+    }
+    
     @IBAction func submitGuessingGame() {
         addDataToDatabase()
         presentAlertView("Game Sent")
@@ -32,15 +67,16 @@ class GuessingGameViewController: UIViewController {
     
     
     func addDataToDatabase() {
-        let childs = ref.child("guessingGames").childByAutoId()
+        let childs = ref.child("games").childByAutoId()
         let key = childs.key
         let post = ["gameName": gameNameTxt.text!,
             "lowerRange": lowerRangeTxt.text!,
             "upperRange": upperRangeTxt.text!,
             "multiplier": factorTxt.text!,
-            "reward": rewardTxt.text!]
-        let childUpdates = ["/games/guessingGames/\(key)/" : post]
-        ref.updateChildValues(childUpdates as [NSObject : AnyObject])
+            "reward": rewardTxt.text!,
+            "type" : "Guessing Game"]
+        let childUpdates = ["/games/\(key)/" : post]
+        ref.updateChildValues(childUpdates as [AnyHashable: Any])
     }
     
     func clearFields() {
@@ -55,31 +91,31 @@ class GuessingGameViewController: UIViewController {
     }
    
 
-    @IBAction func updateLowerRangeLabel(sender: UITextField) {
+    @IBAction func updateLowerRangeLabel(_ sender: UITextField) {
         
         rangeReviewLabel.text = "\(sender.text!)-"
     }
     
-    @IBAction func updateUpperRangeLabel(sender: UITextField) {
+    @IBAction func updateUpperRangeLabel(_ sender: UITextField) {
         let temp = rangeReviewLabel.text
         rangeReviewLabel.text = temp!+(sender.text!)
     }
    
-    @IBAction func updateMultiplerLabel(sender: UITextField) {
+    @IBAction func updateMultiplerLabel(_ sender: UITextField) {
         multiplierReviewLabel.text = sender.text
     }
     
-    @IBAction func updateRewardLabel(sender: UITextField) {
+    @IBAction func updateRewardLabel(_ sender: UITextField) {
         rewardReviewLabel.text = sender.text
     }
     
-    func presentAlertView(str: String) {
+    func presentAlertView(_ str: String) {
         
-        let alert = UIAlertController(title: str, message: presentText(), preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: str, message: presentText(), preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: { action in
             self.clearFields() }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func presentText()->String {

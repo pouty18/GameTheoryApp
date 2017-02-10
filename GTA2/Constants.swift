@@ -9,11 +9,14 @@
 import Foundation
 import UIKit
 
-var defaults = NSUserDefaults.standardUserDefaults()
+var defaults = UserDefaults.standard
 
-var loginDefault = NSUserDefaults.standardUserDefaults()
+var loginDefault = UserDefaults.standard
 
 let SHADOW_COLOR: CGFloat = 157.0 / 255.0
 
 var globalUser = User()
+
+var globalAuthID: String = ""
+
 

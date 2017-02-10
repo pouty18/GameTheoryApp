@@ -8,10 +8,11 @@
 
 import UIKit
 import Foundation
+import Firebase
 
 class LoginViewController: UIViewController {
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
 //        defaults.removeObjectForKey("loginSuccess")
@@ -21,126 +22,22 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordTxt: UITextField!
     
-    @IBAction func loginButtonTapped(sender: AnyObject) {
-        
-        var loginSuccessful = Bool()
+    @IBAction func loginButtonTapped(_ sender: AnyObject) {
         //if text fields are empty
-        
         if emailTxt.text!.isEmpty || passwordTxt.text!.isEmpty {
-            
             //red place holders
-            
-            
-            emailTxt.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName: UIColor.redColor()])
-            passwordTxt.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.redColor()])
+            emailTxt.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName: UIColor.red])
+            passwordTxt.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.red])
         }
         else {
             logInUser()
         }
-        
-            /*
-        else  {
-            
-            let email   = emailTxt.text!
-            let pass1   = passwordTxt.text!
-            
-            let urlString = "http://localhost/~richardpoutier/stap/userLogin.php"
-            let session = NSURLSession.sharedSession()
-            let url = NSURL(string: urlString)
-            let request = NSMutableURLRequest(URL: url!)
-            request.HTTPMethod = "POST";
-            
-            let postString = "email="+email+"&password="+pass1
-            
-            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-            
-            session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-                guard error == nil && data != nil else {                                                          // check for fundamental networking error
-                    print("error=\(error)")
-                    return
-                }
-                
-                if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
-                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                    print("response = \(response)")
-                } else {
-                    if let data = data {
-                        do {
-                            if let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
-                                print(json.debugDescription)
-                                guard let loginStatus = json["status"] as? String else {
-                                    print("Error finding userInfo with json:")
-                                    return
-                                }
-                                if loginStatus == "Success" {
-                                    print("login succes")
-                                    loginDefault.setBool(true, forKey: "isLoggedIn")
-                                    defaults.setBool(true, forKey: "loginSuccess")
-                                    defaults.synchronize()
-                                } else if loginStatus == "error" {
-                                    print("login not succesful")
-                                }
-                            }
-                        } catch {
-                            print("error serializing JSON: \(error)")
-                        }
-                    }
-                }
-            }).resume()
-            
-            
-            print(defaults.objectForKey("data") as? NSData)
-            
-//            if let myData = defaults.objectForKey("data") as? NSData {
-//                do {
-//                    if let json = try NSJSONSerialization.JSONObjectWithData(myData, options: []) as? [String: AnyObject] {
-//                        print(json.debugDescription)
-//                        guard let loginStatus = json["status"] as? String else {
-//                            print("Error finding userInfo with json:")
-//                            return
-//                        }
-//                        if loginStatus == "Success" {
-//                            defaults.setBool(true, forKey: "loginSuccess")
-//                            defaults.synchronize()
-//                        }
-//                    }
-//                    
-//                } catch {
-//                    print("error serializing JSON: \(error)")
-//                }
-//            }
-            
-            print("Login Successful \(defaults.boolForKey("loginSuccess"))")
-            if defaults.boolForKey("loginSuccess") {
-                globalUser.isLoggedIn = true
-                globalUser.email = emailTxt.text!
-            }
-        }
-*/
-        
-        //        globalUser.printDetails()
-        
-        if globalUser.isLoggedIn {
-            self.performSegueWithIdentifier("protectedView", sender: nil)
-        } else {
-            print("Error Logging in User")
-            presentAlertView("Error Logging In", _message: "Problem with login creddentials")
-            emailTxt.text! = ""
-            passwordTxt.text! = ""
-            emailTxt.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName: UIColor.redColor()])
-            passwordTxt.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.redColor()])
-        }
-        
-        print("LoginDefault = \(loginDefault.boolForKey("isLoggedIn"))")
-/* */
-        
     }
     
-    func presentAlertView(_title: String, _message: String) {
-        
-        let alert = UIAlertController(title: _title, message: _message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+    func presentAlertView(_ _title: String, _message: String) {
+        let alert = UIAlertController(title: _title, message: _message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func presentText()->String {
@@ -149,52 +46,24 @@ class LoginViewController: UIViewController {
     }
     
     func logInUser() {
-        
-        let email   = emailTxt.text!
+        let email   =
+            emailTxt.text!
         let pass1   = passwordTxt.text!
         
-        let urlString = "http://localhost/~richardpoutier/stap/login-process.php"
-        let session = NSURLSession.sharedSession()
-        let url = NSURL(string: urlString)
-        let request = NSMutableURLRequest(URL: url!)
-        request.HTTPMethod = "POST";
-        
-        let postString = "email="+email+"&password="+pass1
-        
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        
-        session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-            guard error == nil && data != nil else {                                                          // check for fundamental networking error
-                print("error=\(error)")
-                return
+        FIRAuth.auth()?.signIn( withEmail: email, password: pass1) { (user, error) in
+            // ...
+            if error == nil {
+                //                        self.labelMessage.text = "You are successfully registered"
+                print("You have successfully logged in")
+                self.performSegue(withIdentifier: "protectedView", sender: nil)
+            }else{
+                //                        self.labelMessage.text = "Registration Failed.. Please Try Again"
+                print ("Sign-in Failed... Please Try Again")
             }
             
-            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            } else {
-                if let data = data {
-                    do {
-                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject] {
-                            print(json.debugDescription)
-                            guard let loginStatus = json["status"] as? String else {
-                                print("Error finding userInfo with json:")
-                                return
-                            }
-                            if loginStatus == "Success" {
-                                print("login succes")
+        }
+     
 
-                            } else if loginStatus == "error" {
-                                print("login not succesful")
-                            }
-                        }
-                    } catch {
-                        print("error serializing JSON: \(error)")
-                    }
-                }
-            }
-        }).resume()
-        
     }
     
 }

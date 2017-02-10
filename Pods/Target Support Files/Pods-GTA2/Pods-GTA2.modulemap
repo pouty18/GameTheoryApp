@@ -1,6 +1,0 @@
-framework module Pods_GTA2 {
-  umbrella header "Pods-GTA2-umbrella.h"
-
-  export *
-  module * { export * }
-}

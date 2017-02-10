@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		831B8DED64F67927EE721B26 /* Pods_GTA2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA772AFA5643ECD0A2D78B6F /* Pods_GTA2.framework */; };
+		A706965D1E48D7D40062E471 /* ActiveGamesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A706965C1E48D7D40062E471 /* ActiveGamesTVC.swift */; };
+		A71E67651E410F2F007536B9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E67641E410F2F007536B9 /* Game.swift */; };
 		A72195991E206C9100287C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72195981E206C9100287C34 /* AppDelegate.swift */; };
 		A721959B1E206C9100287C34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721959A1E206C9100287C34 /* ViewController.swift */; };
 		A721959E1E206C9100287C34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A721959C1E206C9100287C34 /* Main.storyboard */; };
@@ -29,10 +31,18 @@
 		A73F9D141E22FCCA000596E9 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73F9D131E22FCCA000596E9 /* MaterialTextField.swift */; };
 		A73F9D161E230421000596E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A73F9D151E230421000596E9 /* GoogleService-Info.plist */; };
 		A771B7FC1E23116000343E33 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A771B7FB1E23116000343E33 /* DataService.swift */; };
+		A7A43A8A1E3AF20600EBEC93 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A43A891E3AF20600EBEC93 /* CreateGameViewController.swift */; };
+		A7A43A8C1E3BAFF200EBEC93 /* GuessingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A43A8B1E3BAFF200EBEC93 /* GuessingGameViewController.swift */; };
+		A7AA2E201E3C203D00507B18 /* GuessingGamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA2E1F1E3C203D00507B18 /* GuessingGamesTableViewController.swift */; };
+		A7AA2E221E3C239400507B18 /* GuessingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA2E211E3C239400507B18 /* GuessingGame.swift */; };
+		A7AA2E241E3C244100507B18 /* sampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA2E231E3C244100507B18 /* sampleData.swift */; };
+		A7C5B6C71E3FECD400F120B6 /* GG-GameBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C5B6C61E3FECD400F120B6 /* GG-GameBoardViewController.swift */; };
 		A7D00F7A1E21CAF6006E5132 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D00F791E21CAF6006E5132 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A706965C1E48D7D40062E471 /* ActiveGamesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveGamesTVC.swift; sourceTree = "<group>"; };
+		A71E67641E410F2F007536B9 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A72195951E206C9100287C34 /* GTA2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTA2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72195981E206C9100287C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A721959A1E206C9100287C34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +66,12 @@
 		A73F9D131E22FCCA000596E9 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		A73F9D151E230421000596E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A771B7FB1E23116000343E33 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		A7A43A891E3AF20600EBEC93 /* CreateGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
+		A7A43A8B1E3BAFF200EBEC93 /* GuessingGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessingGameViewController.swift; sourceTree = "<group>"; };
+		A7AA2E1F1E3C203D00507B18 /* GuessingGamesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessingGamesTableViewController.swift; sourceTree = "<group>"; };
+		A7AA2E211E3C239400507B18 /* GuessingGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessingGame.swift; sourceTree = "<group>"; };
+		A7AA2E231E3C244100507B18 /* sampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sampleData.swift; sourceTree = "<group>"; };
+		A7C5B6C61E3FECD400F120B6 /* GG-GameBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GG-GameBoardViewController.swift"; sourceTree = "<group>"; };
 		A7D00F791E21CAF6006E5132 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BA196B594B8601FE319DA107 /* Pods-GTA2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTA2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GTA2/Pods-GTA2.debug.xcconfig"; sourceTree = "<group>"; };
 		CA772AFA5643ECD0A2D78B6F /* Pods_GTA2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GTA2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +127,6 @@
 				A73F9CF81E22EF8F000596E9 /* Controller */,
 				A72195981E206C9100287C34 /* AppDelegate.swift */,
 				A73F9CF31E22D36C000596E9 /* Images */,
-				A721959C1E206C9100287C34 /* Main.storyboard */,
 				A721959F1E206C9100287C34 /* Assets.xcassets */,
 				A73F9D041E22F157000596E9 /* RP Design.jpg */,
 				A72195A11E206C9100287C34 /* LaunchScreen.storyboard */,
@@ -137,6 +152,11 @@
 				A72195AC1E2073C300287C34 /* LoginViewController.swift */,
 				A72195AA1E2070E100287C34 /* RegisterPageViewController.swift */,
 				A721959A1E206C9100287C34 /* ViewController.swift */,
+				A7A43A891E3AF20600EBEC93 /* CreateGameViewController.swift */,
+				A7A43A8B1E3BAFF200EBEC93 /* GuessingGameViewController.swift */,
+				A7AA2E1F1E3C203D00507B18 /* GuessingGamesTableViewController.swift */,
+				A7C5B6C61E3FECD400F120B6 /* GG-GameBoardViewController.swift */,
+				A706965C1E48D7D40062E471 /* ActiveGamesTVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -144,6 +164,7 @@
 		A73F9CF91E22EF97000596E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A721959C1E206C9100287C34 /* Main.storyboard */,
 				A7D00F791E21CAF6006E5132 /* User.swift */,
 				A73F9D061E22F3B3000596E9 /* MaterialView.swift */,
 				A73F9D0D1E22FB80000596E9 /* MaterialButton.swift */,
@@ -155,6 +176,8 @@
 		A73F9CFA1E22EFA0000596E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A7AA2E211E3C239400507B18 /* GuessingGame.swift */,
+				A71E67641E410F2F007536B9 /* Game.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -166,6 +189,7 @@
 				A73F9CFD1E22F05A000596E9 /* NotoSans-BoldItalic.ttf */,
 				A73F9CFE1E22F05A000596E9 /* NotoSans-Italic.ttf */,
 				A73F9CFF1E22F05A000596E9 /* NotoSans-Regular.ttf */,
+				A7AA2E231E3C244100507B18 /* sampleData.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -225,11 +249,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Richard Poutier";
 				TargetAttributes = {
 					A72195941E206C9100287C34 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 9G47RHN8NT;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -328,13 +354,21 @@
 			files = (
 				A72195AD1E2073C300287C34 /* LoginViewController.swift in Sources */,
 				A721959B1E206C9100287C34 /* ViewController.swift in Sources */,
+				A7A43A8C1E3BAFF200EBEC93 /* GuessingGameViewController.swift in Sources */,
 				A73F9D141E22FCCA000596E9 /* MaterialTextField.swift in Sources */,
 				A72195991E206C9100287C34 /* AppDelegate.swift in Sources */,
+				A706965D1E48D7D40062E471 /* ActiveGamesTVC.swift in Sources */,
 				A7D00F7A1E21CAF6006E5132 /* User.swift in Sources */,
 				A771B7FC1E23116000343E33 /* DataService.swift in Sources */,
 				A72195AB1E2070E100287C34 /* RegisterPageViewController.swift in Sources */,
 				A73F9D0E1E22FB80000596E9 /* MaterialButton.swift in Sources */,
+				A7AA2E241E3C244100507B18 /* sampleData.swift in Sources */,
+				A7AA2E201E3C203D00507B18 /* GuessingGamesTableViewController.swift in Sources */,
+				A7AA2E221E3C239400507B18 /* GuessingGame.swift in Sources */,
+				A7A43A8A1E3AF20600EBEC93 /* CreateGameViewController.swift in Sources */,
+				A71E67651E410F2F007536B9 /* Game.swift in Sources */,
 				A73F9D071E22F3B3000596E9 /* MaterialView.swift in Sources */,
+				A7C5B6C71E3FECD400F120B6 /* GG-GameBoardViewController.swift in Sources */,
 				A73F9D0A1E22F4C2000596E9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,8 +408,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -418,8 +454,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -438,6 +476,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -447,10 +486,12 @@
 			baseConfigurationReference = BA196B594B8601FE319DA107 /* Pods-GTA2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9G47RHN8NT;
 				INFOPLIST_FILE = GTA2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpoutier.gta2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -459,10 +500,12 @@
 			baseConfigurationReference = F8EE22FD707AAAB92776B153 /* Pods-GTA2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9G47RHN8NT;
 				INFOPLIST_FILE = GTA2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpoutier.gta2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
